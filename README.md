@@ -1,2 +1,2 @@
 # RAG-for-research
-Export research files, ask questions about it and get valid answers!
+ResearchRAG: A Corpus-Scale Retrieval System for Quantization & Low-Bit LLM Inference Literature
