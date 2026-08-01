@@ -1,0 +1,81 @@
+{
+  "schema_notes": {
+    "id": "unique string id, e.g. Q001",
+    "category": "one of: factual | synthesis | contradiction | timeline | adversarial",
+    "question": "the question text",
+    "answer": "your hand-verified correct answer, written in your own words",
+    "supporting_evidence": [
+      {
+        "paper_id": "arXiv id or short citation key, e.g. arXiv:2210.17323",
+        "section": "e.g. Section 4.2 / Table 3",
+        "passage": "the exact sentence(s) or a close paraphrase of the passage that supports the answer -- this is what you'll check retrieval against later"
+      }
+    ],
+    "notes": "optional: anything tricky about this question (e.g. answer depends on model size, or two papers use different definitions)"
+  },
+  "questions": [
+    {
+      "id": "Q001",
+      "category": "factual",
+      "question": "What bit-width does GPTQ quantize model weights to in its main reported experiments?",
+      "answer": "GPTQ is primarily evaluated at 3-bit and 4-bit weight quantization, applied post-training without retraining.",
+      "supporting_evidence": [
+        {
+          "paper_id": "REPLACE_WITH_ARXIV_ID",
+          "section": "REPLACE_WITH_SECTION",
+          "passage": "REPLACE_WITH_EXACT_OR_PARAPHRASED_SUPPORTING_TEXT"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "Q002",
+      "category": "synthesis",
+      "question": "What are the main strategies proposed across the corpus for handling outlier weights/activations during quantization?",
+      "answer": "REPLACE: e.g. summarize 2-3 distinct strategies you found across multiple papers, and which papers propose each.",
+      "supporting_evidence": [
+        {
+          "paper_id": "REPLACE",
+          "section": "REPLACE",
+          "passage": "REPLACE"
+        },
+        {
+          "paper_id": "REPLACE_SECOND_PAPER",
+          "section": "REPLACE",
+          "passage": "REPLACE"
+        }
+      ],
+      "notes": "synthesis questions should draw on 2+ papers"
+    },
+    {
+      "id": "Q003",
+      "category": "contradiction",
+      "question": "REPLACE: e.g. Do any papers disagree on whether per-channel or per-tensor quantization matters more at low bit-widths?",
+      "answer": "REPLACE with the actual disagreement you found, naming both papers/positions.",
+      "supporting_evidence": [
+        {"paper_id": "REPLACE_PAPER_A", "section": "REPLACE", "passage": "REPLACE"},
+        {"paper_id": "REPLACE_PAPER_B", "section": "REPLACE", "passage": "REPLACE"}
+      ],
+      "notes": "only include real contradictions you found while reading -- don't manufacture these"
+    },
+    {
+      "id": "Q004",
+      "category": "timeline",
+      "question": "How did weight-only quantization methods evolve from 8-bit to sub-4-bit approaches between roughly 2021 and 2025?",
+      "answer": "REPLACE with a short chronological account, naming the key papers/methods at each step.",
+      "supporting_evidence": [
+        {"paper_id": "REPLACE_EARLIEST", "section": "REPLACE", "passage": "REPLACE"},
+        {"paper_id": "REPLACE_LATER", "section": "REPLACE", "passage": "REPLACE"}
+      ],
+      "notes": ""
+    },
+    {
+      "id": "Q005",
+      "category": "adversarial",
+      "question": "REPLACE: ask about a specific technique/model family that your corpus does NOT cover.",
+      "answer": "insufficient evidence -- this corpus does not contain papers addressing this.",
+      "supporting_evidence": [],
+      "notes": "correct system behavior is to abstain, not guess. Track this separately in scoring."
+    }
+  ]
+}
