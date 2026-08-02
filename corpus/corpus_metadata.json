@@ -4898,21 +4898,6 @@
     "pdf_url": "https://arxiv.org/pdf/2607.20757v2"
   },
   {
-    "arxiv_id": "2607.10137",
-    "version": "2607.10137v2",
-    "title": "RDQ: Residual Distribution Quantization for Large Language Models",
-    "authors": [
-      "Prateek Singh"
-    ],
-    "abstract": "Post-training quantization (PTQ) of large language models degrades sharply below 4-bit precision. We identify the root cause as residual stream distributional drift: quantization noise injected at each transformer layer accumulates in the shared residual representation, causing KL divergence from the FP16 baseline to grow super-linearly with depth (Pearson r=0.999 with log-perplexity, p<0.001, confirmed across all tested methods and bit-widths). We discover that 84% of LLaMA-3-8B layers exhibit non-Gaussian residual distributions (KS test, p<=0.05), and that per-layer residual stream variance grows 6,548x across depth. We propose RDQ (Residual Distribution Quantization), a PTQ framework whose central contribution is Cascaded Error Compensation (CEC): a sequential calibration procedure that captures the actual drifted activations each layer receives (computed by running calibration data through already-quantized upstream layers) and fits per-channel AWQ-style scales against those drifted inputs, with scales folded into preceding RMSNorm weights for exact mathematical equivalence at zero inference overhead. RDQ achieves state-of-the-art results on all three tested architectures: LLaMA-3-8B: 7.55 / 5.62 PPL (W3/W4); Qwen-2.5-7B: 7.46 / 6.38 PPL; Mistral-7B: 6.88 / 5.73 PPL. RDQ beats the best published baseline (LeanQuant/SpinQuant) at every model and bit-width combination, with gains up to -46.4% vs. RTN at W3A16 on LLaMA-3-8B. All output is standard group-128 asymmetric quantization, deployable on Qualcomm AIMET, GGUF, and any standard inference stack at zero runtime overhead.",
-    "categories": [
-      "cs.LG"
-    ],
-    "published": "2026-07-11T05:54:00Z",
-    "updated": "2026-07-28T14:40:18Z",
-    "pdf_url": "https://arxiv.org/pdf/2607.10137v2"
-  },
-  {
     "arxiv_id": "2607.09999",
     "version": "2607.09999v2",
     "title": "Silent Failures in Quantized LLM Reasoning: A Taxonomy-Based Analysis of Hollow Convergence and Failure Mode Shifts",
@@ -6426,23 +6411,6 @@
     "pdf_url": "https://arxiv.org/pdf/2604.21254v3"
   },
   {
-    "arxiv_id": "2604.18128",
-    "version": "2604.18128v2",
-    "title": "Depth Registers Unlock W4A4 on SwiGLU: A Reader/Generator Decomposition",
-    "authors": [
-      "Ziyang Liu"
-    ],
-    "abstract": "We study post-training W4A4 quantization in a controlled 300M-parameter SwiGLU decoder-only language model trained on 5B tokens of FineWeb-Edu, and ask which input-activation sites dominate the error. Naive round-to-nearest W4A4 collapses validation perplexity from FP16 23.6 to 1727. A simple residual-axis training-time intervention -- Depth Registers with a register-magnitude hinge loss (DR+sink) -- reduces this to 119 (about 14x) at matched FP16 PPL and matched zero-shot capacity, and composes with SmoothQuant to 39.9 PPL. The residual ~2 PPL gap to FP16 is the diagnostic core. We decompose W4A4 damage by input-activation site: the five trainable linears in a SwiGLU block split into residual-axis readers (qkv, w1, w3) and block-internal generators (o_proj, w2). Elementary norm arguments show residual-axis magnitude control bounds readers tightly but leaves w2's bilinear input bounded only by the trivial product of factor bounds; empirically, DR+sink collapses reader kurtosis while leaving generators essentially unchanged, and the reader-rescued W4A4 residue is flat at ~0.28 nats across three matched checkpoints with Delta-remove(w2) dominating. We present DR+sink as a training-time probe rather than a deployment proposal: a post-hoc alternative (Per-Linear QuaRot) nearly matches it on the reader axis. Full QuaRot -- adding online per-head value Hadamard plus online w2-input rotation -- does not close the gap either, directly testing the prediction that orthogonal rotation cannot bound the bilinear SwiGLU tail. Claims are specific to our 300M, 5B-token, single-seed setting, and our experiments do not isolate the partition from the hinge.",
-    "categories": [
-      "cs.CL",
-      "cs.AI",
-      "cs.LG"
-    ],
-    "published": "2026-04-20T11:47:11Z",
-    "updated": "2026-05-24T03:41:20Z",
-    "pdf_url": "https://arxiv.org/pdf/2604.18128v2"
-  },
-  {
     "arxiv_id": "2604.17384",
     "version": "2604.17384v1",
     "title": "Towards a Data-Parameter Correspondence for LLMs: A Preliminary Discussion",
@@ -7083,25 +7051,6 @@
     "pdf_url": "https://arxiv.org/pdf/2604.10091v1"
   },
   {
-    "arxiv_id": "2604.06798",
-    "version": "2604.06798v4",
-    "title": "MoBiE: Efficient Inference of Mixture of Binary Experts under Post-Training Quantization",
-    "authors": [
-      "Zhixiong Zhao",
-      "Zukang Xu",
-      "Zhixuan Chen",
-      "Dawei Yang"
-    ],
-    "abstract": "Mixture-of-Experts (MoE) based large language models (LLMs) offer strong performance but suffer from high memory and computation costs. Weight binarization provides extreme efficiency, yet existing binary methods designed for dense LLMs struggle with MoE-specific issues, including cross-expert redundancy, task-agnostic importance estimation, and quantization-induced routing shifts. To this end, we propose MoBiE, the first binarization framework tailored for MoE-based LLMs. MoBiE is built on three core innovations: 1. using joint SVD decomposition to reduce cross-expert redundancy; 2. integrating global loss gradients into local Hessian metrics to enhance weight importance estimation; 3. introducing an error constraint guided by the input null space to mitigate routing distortion. Notably, MoBiE achieves these optimizations while incurring no additional storage overhead, striking a balance between efficiency and model performance. Extensive experiments demonstrate that MoBiE consistently outperforms state-of-the-art binary methods across multiple MoE-based LLMs and benchmarks. For example, on Qwen3-30B-A3B, MoBiE reduces perplexity by 52.2$\\%$, improves average zero-shot performance by 43.4$\\%$, achieves over 2 $\\times$ inference speedup, and further shortens quantization time. The code is available at https://github.com/Kishon-zzx/MoBiE.",
-    "categories": [
-      "cs.LG",
-      "cs.AI"
-    ],
-    "published": "2026-04-08T08:12:26Z",
-    "updated": "2026-04-20T16:58:22Z",
-    "pdf_url": "https://arxiv.org/pdf/2604.06798v4"
-  },
-  {
     "arxiv_id": "2604.06515",
     "version": "2604.06515v1",
     "title": "Efficient Quantization of Mixture-of-Experts with Theoretical Generalization Guarantees",
@@ -7227,22 +7176,6 @@
     "published": "2026-04-03T13:52:38Z",
     "updated": "2026-04-08T07:22:54Z",
     "pdf_url": "https://arxiv.org/pdf/2604.03044v2"
-  },
-  {
-    "arxiv_id": "2603.29078",
-    "version": "2603.29078v2",
-    "title": "PolarQuant: Optimal Gaussian Weight Quantization via Hadamard Rotation for LLM Compression",
-    "authors": [
-      "Caio Vicentino"
-    ],
-    "abstract": "We present PolarQuant, a post-training weight quantization method for large language models (LLMs) that exploits the distributional structure of neural network weights to achieve near-lossless compression. PolarQuant operates in three stages: (1) block-wise normalization to the unit hypersphere, (2) Walsh-Hadamard rotation to transform coordinates into approximately Gaussian random variables, and (3) quantization with centroids matched to the Gaussian distribution. Our ablation reveals that Hadamard rotation alone accounts for 98% of the quality improvement, reducing Qwen3.5-9B perplexity from 6.90 (absmax Q5) to 6.40 (Delta = +0.03 from FP16), making it practically lossless without any calibration data. Furthermore, PolarQuant functions as an effective preprocessing step for downstream INT4 quantizers: PolarQuant Q5 dequantized and re-quantized by torchao INT4 achieves perplexity 6.56 versus 6.68 for direct absmax INT4, while maintaining 43.1 tok/s throughput at 6.5 GB VRAM. Code and models are publicly available.",
-    "categories": [
-      "cs.CL",
-      "cs.LG"
-    ],
-    "published": "2026-03-30T23:33:28Z",
-    "updated": "2026-04-20T23:13:12Z",
-    "pdf_url": "https://arxiv.org/pdf/2603.29078v2"
   },
   {
     "arxiv_id": "2603.28765",
@@ -8846,36 +8779,6 @@
     "published": "2025-08-04T07:22:36Z",
     "updated": "2025-08-04T07:22:36Z",
     "pdf_url": "https://arxiv.org/pdf/2508.02128v1"
-  },
-  {
-    "arxiv_id": "2508.00370",
-    "version": "2508.00370v2",
-    "title": "EdgeInfinite-Instruct: Bridging SFT-Based Optimization and NPU-Level Efficiency for Edge Devices",
-    "authors": [
-      "Jiyu Chen",
-      "Poh Seng Lim",
-      "Shuang Peng",
-      "Daxiong Luo",
-      "JungHau Foo",
-      "Yap Deep",
-      "Timothy Lee Jun Jie",
-      "Kelvin Teh Kae Wen",
-      "Fan Yang",
-      "Danyu Feng",
-      "Hao-Yun Chen",
-      "Peng-Wen Chen",
-      "Fangyuan Li",
-      "Xiaoxin Chen",
-      "Wong Wai Mun"
-    ],
-    "abstract": "Deploying Transformer-based large language models (LLMs) on resource-constrained edge devices for long-sequence tasks remains challenging due to the quadratic time complexity of self-attention and growing Key-Value (KV) cache demands. While existing KV cache optimizations improve memory efficiency, they often fail to reduce time to first token (TTFT) and may degrade performance through token pruning. Alternative sequence modeling architectures address some of these limitations, but typically require full retraining and lack infrastructure support. EdgeInfinite offers an efficient solution by fine-tuning only a small subset of parameters, maintaining quality while reducing both computational and memory costs, including improved TTFT. However, its instruction-following ability is limited, and it lacks mobile-specific optimizations. To address these issues, we propose EdgeInfinite-Instruct, which introduces a Segmented Supervised Fine-Tuning (S-SFT) strategy tailored to long-sequence tasks such as summarization and question answering. We further optimized EdgeInfinite-Instruct for efficient deployment on edge NPUs by employing fine-grained post-training quantization (PTQ) to reduce computational demands while maintaining accuracy, and by implementing a fixed-shape computation graph that balances memory usage and on-device efficiency through scenario-specific customization of input token and cache sizes. Experiments on long-context benchmarks and real-world mobile tasks show that our approach improves domain-specific performance while maintaining efficiency on NPU-accelerated edge devices.",
-    "categories": [
-      "cs.CL",
-      "cs.LG"
-    ],
-    "published": "2025-08-01T07:03:16Z",
-    "updated": "2025-08-06T08:32:53Z",
-    "pdf_url": "https://arxiv.org/pdf/2508.00370v2"
   },
   {
     "arxiv_id": "2507.11959",
