@@ -39,3 +39,19 @@ or remove their entries from the metadata file.
 Run after `build_corpus.py`, before writing gold evaluation questions:
 
     python check_missing.py
+
+## Reading Log
+
+`paper-reading-log/` holds a running annotated bibliography — one entry per
+paper, written as part of building the gold evaluation set. Each entry
+covers the problem addressed, core method, key results, where the paper
+sits on the corpus's two comparison axes (quantization granularity and
+accuracy-recovery method), a noted limitation, and draft eval-question
+seeds.
+
+- `paper-reading-log/template.md` — entry template, with a worked example
+- `paper-reading-log/papers/` — source PDFs for papers under active review (gitignored)
+
+This log is also the main artifact for demonstrating literature depth
+beyond what the RAG system itself can show — code proves the system works,
+this proves the papers were actually read and understood.
